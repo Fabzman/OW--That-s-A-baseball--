@@ -6,7 +6,17 @@ public class BallMovement : MonoBehaviour {
 
     public float ballSpeed;
     public float lifetime;
+
+    private Rigidbody rb;
+
     //public Transform player;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+
+        rb.AddForce(transform.forward * ballSpeed, ForceMode.Impulse);
+    }
 
     // Use this for initialization
     void Start ()
@@ -18,7 +28,7 @@ public class BallMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        transform.Translate(Vector3.forward * ballSpeed * Time.deltaTime);
+        //transform.Translate(Vector3.forward * ballSpeed * Time.deltaTime);
         lifetime -= Time.deltaTime;
 
         if (lifetime <=0)

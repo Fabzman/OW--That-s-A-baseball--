@@ -6,16 +6,14 @@ public class BallSpawn : MonoBehaviour {
 
     public static BallSpawn instance;
 
-    public int ballCount;
     public float spawnTimer;
     public GameObject ball;
     //public Transform ballSpawner;
-
+    private GameObject currentBall;
     // Use this for initialization
     void Start()
     {
         spawnTimer = 2f;
-        ballCount = 0;
     }
 
     // Update is called once per frame
@@ -23,15 +21,14 @@ public class BallSpawn : MonoBehaviour {
     {
         spawnTimer -= Time.deltaTime;
 
-        if (ballCount >= 1)
+        if (currentBall)
         {
             return;
         }
 
-        if (spawnTimer <= 0 && ballCount < 1)
+        if (spawnTimer <= 0)
         {
-            Instantiate(ball, transform.position, transform.rotation);
-            ballCount++;
+            currentBall = Instantiate(ball, transform.position, transform.rotation);
             spawnTimer = 5f;
         }
     }
