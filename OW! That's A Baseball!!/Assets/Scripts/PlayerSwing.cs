@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSwing : MonoBehaviour {
+
     public float rotationSpeed = 10F;
     private float rotation;
 
@@ -17,12 +18,12 @@ public class PlayerSwing : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rotation = -135F;
+            rotation = -134F;
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            rotation = 45F;
+            rotation = 44F;
         }
 
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.AngleAxis(rotation, Vector3.up), rotationSpeed * Time.deltaTime);

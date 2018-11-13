@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallSpawn : MonoBehaviour {
 
-    public static BallSpawn instance;
+    //public static BallSpawn instance;
 
     public float spawnTimer;
     public GameObject ball;
