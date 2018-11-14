@@ -37,4 +37,10 @@ public class BallMovement : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.CompareTag("Bat"))
+        rb.AddForce(-transform.forward * ballSpeed *10, ForceMode.Impulse);
+    }
 }
