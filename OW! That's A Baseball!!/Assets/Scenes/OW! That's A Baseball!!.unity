@@ -1467,6 +1467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTimer: 0
   ball: {fileID: 1672320066250308, guid: 427bcde9a8c82154bb8d3ba555c63275, type: 2}
+  pitchingMachine: {fileID: 1421064529}
 --- !u!1 &1656560837
 GameObject:
   m_ObjectHideFlags: 0

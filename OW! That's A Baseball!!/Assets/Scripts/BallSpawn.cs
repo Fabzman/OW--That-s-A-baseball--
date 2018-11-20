@@ -10,6 +10,8 @@ public class BallSpawn : MonoBehaviour {
     public GameObject ball;
     //public Transform ballSpawner;
     private GameObject currentBall;
+    public Transform pitchingMachine;
+
     // Use this for initialization
     void Start()
     {
@@ -28,6 +30,7 @@ public class BallSpawn : MonoBehaviour {
 
         if (spawnTimer <= 0)
         {
+            pitchingMachine.eulerAngles = new Vector3(0F, Random.Range(38F, 55F), 0F);
             currentBall = Instantiate(ball, transform.position, transform.rotation);
             spawnTimer = 5f;
         }
