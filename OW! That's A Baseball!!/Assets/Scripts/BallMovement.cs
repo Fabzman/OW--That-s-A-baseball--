@@ -8,6 +8,7 @@ public class BallMovement : MonoBehaviour {
     public float lifetime;
 
     private Rigidbody rb;
+    private TrailRenderer trail;
 
     //public Transform player;
 
@@ -16,12 +17,15 @@ public class BallMovement : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
 
         rb.AddForce(transform.forward * ballSpeed, ForceMode.Impulse);
+
+        trail = GetComponent<TrailRenderer>();
     }
 
     // Use this for initialization
     void Start ()
     {
         //player = GameObject.Find("Player").transform;
+        trail.enabled = false;
         lifetime = 5f;
     }
 	
@@ -41,6 +45,10 @@ public class BallMovement : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.collider.CompareTag("Bat"))
-        rb.AddForce(-transform.forward * ballSpeed *10, ForceMode.Impulse);
+        {
+            rb.constraints = RigidbodyConstraints.None;
+            rb.AddForce(collision.contacts[0].normal * ballSpeed * 10, ForceMode.Impulse);
+            trail.enabled = true;
+        }
     }
 }

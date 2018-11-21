@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerSwing : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class PlayerSwing : MonoBehaviour
     private float startRotation;
     public float neutralTimer;
     public bool neutralStance;
+    public Image powerBar;
+    private float powerTimer = 0f;
+    public AudioClip ouch;
+    private ParticleSystem stars;
 
     bool hasReleased = false;
 
@@ -21,6 +26,7 @@ public class PlayerSwing : MonoBehaviour
         angle = startRotation;
         neutralTimer = 2f;
         neutralStance = true;
+        stars = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -32,11 +38,17 @@ public class PlayerSwing : MonoBehaviour
             hasReleased = false;
         }
 
+        if(Input.GetKey(KeyCode.Space))
+        {
+            powerTimer += Time.deltaTime;
+        }
+
         if (Input.GetKeyUp(KeyCode.Space))
         {
             rotation = -110F;
             neutralTimer = 2f;
             hasReleased = true;
+            powerTimer = 0f;
         }
 
         if (neutralTimer > 0 && hasReleased)
@@ -50,9 +62,20 @@ public class PlayerSwing : MonoBehaviour
             }
         }
 
+        powerBar.fillAmount = powerTimer / 2;
+
         angle = Mathf.Lerp(angle, rotation, rotationSpeed * Time.deltaTime);
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, angle, transform.eulerAngles.z);
         //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.AngleAxis(rotation, Vector3.up), rotationSpeed * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Ball"))
+        {
+            AudioSource.PlayClipAtPoint(ouch, Camera.main.transform.position);
+            stars.Play();
+        }
     }
 
 }
