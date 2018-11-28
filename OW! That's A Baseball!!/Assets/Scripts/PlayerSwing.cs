@@ -13,6 +13,7 @@ public class PlayerSwing : MonoBehaviour
     private float powerTimer = 0f;
     public AudioClip ouch;
     private ParticleSystem stars;
+    public Text scoreText;
 
     bool hasReleased = false;
 

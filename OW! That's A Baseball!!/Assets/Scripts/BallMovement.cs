@@ -49,6 +49,7 @@ public class BallMovement : MonoBehaviour {
             rb.constraints = RigidbodyConstraints.None;
             rb.AddForce(collision.contacts[0].normal * ballSpeed * 10, ForceMode.Impulse);
             trail.enabled = true;
+            GameManager.instance.BallCounter();
         }
     }
 }
