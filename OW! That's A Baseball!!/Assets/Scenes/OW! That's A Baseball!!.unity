@@ -6286,7 +6286,7 @@ GameObject:
   - component: {fileID: 1428253631}
   - component: {fileID: 1428253629}
   m_Layer: 0
-  m_Name: TextMeshPro
+  m_Name: 'Balls Hit:'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
