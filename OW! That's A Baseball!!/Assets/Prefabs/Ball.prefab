@@ -207,6 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballSpeed: 5
   lifetime: 0
+  hit: {fileID: 8300000, guid: 45f32f71727c2ca4896ba31973757f71, type: 3}
 --- !u!135 &135600656775985388
 SphereCollider:
   m_ObjectHideFlags: 1

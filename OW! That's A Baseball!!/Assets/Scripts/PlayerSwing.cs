@@ -76,6 +76,7 @@ public class PlayerSwing : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(ouch, Camera.main.transform.position);
             stars.Play();
+            GameManager.instance.HitCounter();
         }
     }
 

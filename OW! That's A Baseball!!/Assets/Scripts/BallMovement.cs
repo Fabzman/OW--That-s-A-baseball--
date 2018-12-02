@@ -9,6 +9,7 @@ public class BallMovement : MonoBehaviour {
 
     private Rigidbody rb;
     private TrailRenderer trail;
+    public AudioClip hit;
 
     //public Transform player;
 
@@ -49,6 +50,7 @@ public class BallMovement : MonoBehaviour {
             rb.constraints = RigidbodyConstraints.None;
             rb.AddForce(collision.contacts[0].normal * ballSpeed * 10, ForceMode.Impulse);
             trail.enabled = true;
+            AudioSource.PlayClipAtPoint(hit, Camera.main.transform.position);
             GameManager.instance.BallCounter();
         }
     }
